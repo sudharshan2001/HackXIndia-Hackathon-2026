@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medral - AI Healthcare Platform</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-container">
+            <div class="logo">🏥 Medral AI</div>
+            <nav class="nav-tabs">
+                <button class="nav-btn active" data-tab="triage">Triage</button>
+                <button class="nav-btn" data-tab="reports">Reports</button>
+                <button class="nav-btn" data-tab="scribe">Scribe</button>
+                <button class="nav-btn" data-tab="polypharmacy">Polypharmacy</button>
+            </nav>
+            <div class="session-info">
+                <span>Session: <code id="session-id">Loading...</code></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- TRIAGE TAB -->
+        <div class="tab-content active" id="triage-tab">
+            <div class="tab-header">
+                <h1>🚑 Rural Patient Triage</h1>
+                <p>Upload <strong>2 images</strong>: patient vitals slip + patient photo for comprehensive priority assessment</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="upload-section">
+                    <h3>Upload Patient Data (Exactly 2 images)</h3>
+                    <p class="upload-instruction">📋 <strong>Image 1:</strong> Vitals slip with measurements<br>
+                    👤 <strong>Image 2:</strong> Patient photo for physical assessment</p>
+                    <div class="file-input-wrapper">
+                        <div class="drag-drop" id="triage-drag-drop">
+                            <p>📸 Drag and drop 2 images here</p>
+                            <p>or</p>
+                            <input type="file" id="triage-input" multiple accept="image/*" class="file-input">
+                            <label for="triage-input" class="file-label">Click to select files</label>
+                        </div>
+                    </div>
+                    <div id="triage-preview" class="preview-container"></div>
+                    <button id="triage-process" class="btn btn-primary" disabled>Process Triage</button>
+                </div>
+
+                <div class="results-section">
+                    <h3>Analysis Results</h3>
+                    <div id="triage-results" class="results-container">
+                        <p class="placeholder">Results will appear here...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- REPORTS TAB -->
+        <div class="tab-content" id="reports-tab">
+            <div class="tab-header">
+                <h1>📋 Medical Report Simplification</h1>
+                <p>Upload lab reports and discharge summaries for patient-friendly explanations</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="upload-section">
+                    <h3>Upload Reports (Multiple images)</h3>
+                    <div class="file-input-wrapper">
+                        <div class="drag-drop" id="reports-drag-drop">
+                            <p>📄 Drag and drop report images here</p>
+                            <p>or</p>
+                            <input type="file" id="reports-input" multiple accept="image/*" class="file-input">
+                            <label for="reports-input" class="file-label">Click to select files</label>
+                        </div>
+                    </div>
+                    <div id="reports-preview" class="preview-container"></div>
+                    <button id="reports-process" class="btn btn-primary" disabled>Analyze Reports</button>
+                </div>
+
+                <div class="results-section">
+                    <h3>Patient Explanation</h3>
+                    <div id="reports-results" class="results-container">
+                        <p class="placeholder">Results will appear here...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCRIBE TAB -->
+        <div class="tab-content" id="scribe-tab">
+            <div class="tab-header">
+                <h1>📝 Doctor's Scribe</h1>
+                <p>Digitize handwritten notes and create executive summaries for physicians</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="upload-section">
+                    <h3>Upload Doctor Notes (1-2 images)</h3>
+                    <div class="file-input-wrapper">
+                        <div class="drag-drop" id="scribe-drag-drop">
+                            <p>✍️ Drag and drop note images here</p>
+                            <p>or</p>
+                            <input type="file" id="scribe-input" multiple accept="image/*" class="file-input">
+                            <label for="scribe-input" class="file-label">Click to select files</label>
+                        </div>
+                    </div>
+                    <div id="scribe-preview" class="preview-container"></div>
+                    <button id="scribe-process" class="btn btn-primary" disabled>Process Notes</button>
+                </div>
+
+                <div class="results-section">
+                    <h3>Executive Summary</h3>
+                    <div id="scribe-results" class="results-container">
+                        <p class="placeholder">Results will appear here...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TRANSLATOR TAB - HIDDEN -->
+        <!--
+        <div class="tab-content" id="translator-tab">
+            <div class="tab-header">
+                <h1>🌐 Language Translator</h1>
+                <p>Bridge language barriers in healthcare - translate local language medical text</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="upload-section">
+                    <h3>Upload Text in Local Language (1 image)</h3>
+                    <div class="file-input-wrapper">
+                        <div class="drag-drop" id="translator-drag-drop">
+                            <p>🗣️ Drag and drop text image here</p>
+                            <p>or</p>
+                            <input type="file" id="translator-input" accept="image/*" class="file-input">
+                            <label for="translator-input" class="file-label">Click to select file</label>
+                        </div>
+                    </div>
+                    <div id="translator-preview" class="preview-container"></div>
+                    <button id="translator-process" class="btn btn-primary" disabled>Translate</button>
+                </div>
+
+                <div class="results-section">
+                    <h3>Translation & Validation</h3>
+                    <div id="translator-results" class="results-container">
+                        <p class="placeholder">Results will appear here...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        -->
+
+        <!-- POLYPHARMACY TAB -->
+        <div class="tab-content" id="polypharmacy-tab">
+            <div class="tab-header">
+                <h1>💊 Prescription Safety Check</h1>
+                <p>Detect drug interactions and polypharmacy risks across multiple medications</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="upload-section">
+                    <h3>Upload Prescriptions (Multiple images)</h3>
+                    <div class="file-input-wrapper">
+                        <div class="drag-drop" id="polypharmacy-drag-drop">
+                            <p>💉 Drag and drop medicine/prescription images here</p>
+                            <p>or</p>
+                            <input type="file" id="polypharmacy-input" multiple accept="image/*" class="file-input">
+                            <label for="polypharmacy-input" class="file-label">Click to select files</label>
+                        </div>
+                    </div>
+                    <div id="polypharmacy-preview" class="preview-container"></div>
+                    <button id="polypharmacy-process" class="btn btn-primary" disabled>Check Safety</button>
+                </div>
+
+                <div class="results-section">
+                    <h3>Safety Analysis</h3>
+                    <div id="polypharmacy-results" class="results-container">
+                        <p class="placeholder">Results will appear here...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading spinner -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="spinner"></div>
+        <p>Processing your request...</p>
+    </div>
+
+    <!-- Status toast -->
+    <div id="toast" class="toast"></div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
