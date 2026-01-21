@@ -7,6 +7,10 @@ AI-powered healthcare assistant for rural Indian health centers. Built for HackX
 **Team Name:** sslash  
 **Developer:** Sudharshan N
 
+## Presentation
+
+🎯 **Project Presentation:** [View on Google Drive](https://drive.google.com/file/d/1jvI6Q-88w2qz-HHjgppMZC2bNxLT3OBS/view?usp=sharing)
+
 ## Features
 
 **Triage** - Analyzes patient vitals + photos to assign RED/YELLOW/GREEN priority  
@@ -56,4 +60,3 @@ Open `http://localhost:8000`
 2. **Reports**: Upload lab reports for patient-friendly explanations  
 3. **Scribe**: Upload handwritten notes for digital transcription
 4. **Polypharmacy**: Upload medicine photos for safety analysis
-
